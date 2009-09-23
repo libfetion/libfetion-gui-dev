@@ -23,6 +23,8 @@ class FxContact:public QObject
     Q_PROPERTY(QString impresa READ getImpresa WRITE setImpresa)
     Q_PROPERTY(QString state READ getState WRITE setState)
     Q_PROPERTY(QString city READ getCity WRITE setCity)
+    Q_PROPERTY(int groupNr READ getGroupNr WRITE setGroupNr)
+    Q_PROPERTY(int online READ getOnlineStatus WRITE setOnlineStatus)
 
     public:
         FxContact();
@@ -55,6 +57,12 @@ class FxContact:public QObject
         QString getCity() const;
         void setCity(const QString &);
 
+        int getGroupNr();
+        void setGroupNr(int);
+
+        int getOnlineStatus();
+        void setOnlineStatus(int);
+
     private:
         QString mobileNr;
         QString fetionNr;
@@ -65,6 +73,8 @@ class FxContact:public QObject
         QString impresa;
         QString state;
         QString city;
+        int     groupNr;
+        int     online;
 
 };
 

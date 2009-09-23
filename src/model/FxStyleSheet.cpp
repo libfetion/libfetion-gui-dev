@@ -9,6 +9,7 @@
 
 FxStyleSheet::FxStyleSheet(QString file)
 {
+    Q_UNUSED(file)
     // TODO Auto-generated constructor stub
     // read style sheet file
 //    rawFile = new QFile(file);
@@ -23,5 +24,6 @@ FxStyleSheet::~FxStyleSheet()
 bool store()
 {
     // store style sheet to file
+    return false;
 }
 

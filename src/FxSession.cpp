@@ -98,65 +98,21 @@ FxSession::quit()
 #endif
 }
 
-//add account to it's group item
-void FxSession::addAccountToGroup(const Fetion_Account *account)
-{
-    //remove the user's id on account from list...
-    if (!account || account->id == (qlonglong)strtol(fx_get_usr_uid(), NULL, 10)
-        )
-    {
-        return ;
-    }
-
-    int group_no = fx_get_account_group_id(account);
-    if (group_no <= 0)
-    {
-        create_zero_group();
-    }
-
-    char *showname = fx_get_account_show_name(account, TRUE);
-    QString show_name = QString::fromUtf8(showname);
-    int online_state = fx_get_online_status_by_account(account);
-
-    addAccountToGroup(account, show_name, online_state, group_no);
-
-    if (showname)
-    {
-        free(showname);
-    }
-}
-
-void
-FxSession::retrieveContactList()
+FxContact*
+FxSession::fillInContactInfo(FxContact * contact, const Fetion_Personal *p)
 {
     FX_FUNCTION
+    FX_RETURN_WITH_VALUE_IF_FAILED(contact, NULL);
+    FX_RETURN_WITH_VALUE_IF_FAILED(p, contact);
 
-    const Fetion_Account *contact = fx_get_first_account();
-    while (contact)
-    {
-        addAccountToGroup(contact);
-        contact = fx_get_next_account(contact);
-    }
-
-    emit SignalContactListUpdated();
-}
-
-void
-FxSession::updateSelfInfo()
-{
-    FX_FUNCTION
-    self = new FxContact();
-
-    const Fetion_Personal *p = fx_data_get_PersonalInfo();
-
-    QString mnr(p->mobile_no);
+    QString mnr = QString::fromUtf8(p->mobile_no);
 //    QString fnr(p->fetion_no);
-    QString nick(p->nickname);
-    QString name(p->name);
+    QString nick = QString::fromUtf8(p->nickname);
+    QString name = QString::fromUtf8(p->name);
     QString gender(p->gender);
     QString score(fx_get_usr_score());
-    QString impresa(p->impresa);
-    QString state(p->province);
+    QString impresa = QString::fromUtf8(p->impresa);
+    QString state = QString::fromUtf8(p->province);
     QString city(p->city);
 
     FX_DEBUG(mnr);
@@ -171,17 +127,75 @@ FxSession::updateSelfInfo()
     if (nick.isEmpty() && name.isEmpty())
         nick = name = QString(fx_get_usr_show_name());
 
-    self->setMobileNr(mnr);
-//    self->setFetionNr("");
-    self->setNick(nick);
-    self->setName(name);
-    self->setGender(gender);
-    self->setScore(score);
-    self->setImpresa(impresa);
-    self->setState(state);
-    self->setCity(city);
+    contact->setMobileNr(mnr);
+//    contact->setFetionNr("");
+    contact->setNick(nick);
+    contact->setName(name);
+    contact->setGender(gender);
+    contact->setScore(score);
+    contact->setImpresa(impresa);
+    contact->setState(state);
+    contact->setCity(city);
+
+    return contact;
+
+}
+//add account to it's group item
+FxContact *
+FxSession::updateContactInfo(const Fetion_Account *account)
+{
+    FX_FUNCTION
+    FX_RETURN_WITH_VALUE_IF_FAILED(account, NULL);
+
+    FxContact *contact = new FxContact();
+
+    //exclude self contact
+    if (account->id == (qlonglong)strtol(fx_get_usr_uid(), NULL, 10))
+    {
+        return NULL;
+    }
+
+    contact = fillInContactInfo(contact, account->personal);
+    if (contact != NULL)
+    {
+        contact->setGroupNr(fx_get_account_group_id(account));
+        contact->setName(QString::fromUtf8(fx_get_account_show_name(account, TRUE)));
+        contact->setOnlineStatus(fx_get_online_status_by_account(account));
+    }
+    return contact;
+}
+
+void
+FxSession::updateSelfInfo()
+{
+    FX_FUNCTION
+    self = new FxContact();
+
+    const Fetion_Personal *p = fx_data_get_PersonalInfo();
+
+
+    self = fillInContactInfo(self, p);
 
     emit SignalSelfInfoUpdated(self);
+}
+
+void
+FxSession::retrieveContactList()
+{
+    FX_FUNCTION
+
+    FxContact *c = new FxContact();
+    const Fetion_Account *contact = fx_get_first_account();
+
+    while (contact)
+    {
+        c = updateContactInfo(contact);
+        if (c != NULL)
+            contactList.append(c);
+        contact = fx_get_next_account(contact);
+    }
+
+    emit SignalContactListUpdated();
 }
 
 void
@@ -262,8 +276,8 @@ FxSession::fetionLibEventCallback(
             break;
         case FX_LOGIN_OK:
             FX_DEBUG("FX_LOGIN_OK");
-//            retrieveContactList();
             updateSelfInfo();
+            retrieveContactList();
             break;
         default:
             /* unkown error code */

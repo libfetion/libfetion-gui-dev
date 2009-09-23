@@ -55,7 +55,7 @@ FxInstance::slotStartLogin()
     connect(session, SIGNAL(SignalSelfInfoUpdated(FxContact *)),
             mainWnd, SLOT(slotHandleSelfInfoUpdated(FxContact *)));
     connect(session, SIGNAL(SignalContactListUpdated()),
-            mainWnd, SLOT(slotHandleContactListUpdated));
+            mainWnd, SLOT(slotHandleContactListUpdated()));
 }
 
 void

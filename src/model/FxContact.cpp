@@ -111,3 +111,24 @@ FxContact::setCity(const QString & p)
 {
     city = p;
 }
+
+int
+FxContact::getGroupNr()
+{
+    return groupNr;
+}
+void
+FxContact::setGroupNr(int p)
+{
+    groupNr = p;
+}
+int
+FxContact::getOnlineStatus()
+{
+    return online;
+}
+void
+FxContact::setOnlineStatus(int p)
+{
+    online = p;
+}

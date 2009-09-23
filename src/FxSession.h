@@ -60,6 +60,9 @@ class FxSession : public QObject
     private:
         void retrieveContactList();
         void updateSelfInfo();
+        FxContact *updateContactInfo(const Fetion_Account *);
+        FxContact *fillInContactInfo(FxContact *,
+                                     const Fetion_Personal *);
 
     private:
         /* Self information data */
