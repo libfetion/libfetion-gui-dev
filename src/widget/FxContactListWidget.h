@@ -1,17 +1,24 @@
-/*
- * FxContactListWidget.h
- *
- *  Created on: 2009-9-3
- *      Author: veiz
- */
+#ifndef FXCONTACTLISTWIDGET_H
+#define FXCONTACTLISTWIDGET_H
 
-#ifndef FXCONTACTLISTWIDGET_H_
-#define FXCONTACTLISTWIDGET_H_
+#include <QtGui/QWidget>
 
-class FxContactListWidget {
-public:
-	FxContactListWidget();
-	virtual ~FxContactListWidget();
+#include "fxdebug.h"
+
+namespace Ui {
+    class FxContactListWidget;
+}
+
+class FxContactListWidget : public QWidget {
+    Q_OBJECT
+    LOG4QT_DECLARE_QCLASS_LOGGER
+    public:
+        FxContactListWidget(QWidget *parent = 0);
+        ~FxContactListWidget();
+
+    protected:
+        void changeEvent(QEvent *e);
+
 };
 
-#endif /* FXCONTACTLISTWIDGET_H_ */
+#endif // FXCONTACTLISTWIDGET_H

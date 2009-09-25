@@ -140,7 +140,7 @@ FxSession::fillInContactInfo(FxContact * contact, const Fetion_Personal *p)
     return contact;
 
 }
-//add account to it's group item
+
 FxContact *
 FxSession::updateContactInfo(const Fetion_Account *account)
 {
@@ -149,11 +149,14 @@ FxSession::updateContactInfo(const Fetion_Account *account)
 
     FxContact *contact = new FxContact();
 
-    //exclude self contact
+    /* exclude self contact */
     if (account->id == (qlonglong)strtol(fx_get_usr_uid(), NULL, 10))
     {
         return NULL;
     }
+
+    /* update specified user information */
+    fx_update_account_info_by_id(account->id);
 
     contact = fillInContactInfo(contact, account->personal);
     if (contact != NULL)

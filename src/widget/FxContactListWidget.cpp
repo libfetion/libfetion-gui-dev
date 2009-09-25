@@ -1,18 +1,21 @@
-/*
- * FxContactListWidget.cpp
- *
- *  Created on: 2009-9-3
- *      Author: veiz
- */
-
 #include "FxContactListWidget.h"
+#include <QLabel>
 
-FxContactListWidget::FxContactListWidget() {
-	// TODO Auto-generated constructor stub
-
+FxContactListWidget::FxContactListWidget(QWidget *parent) :
+    QWidget(parent)
+{
+    FX_FUNCTION
+    QLabel *lbl = new QLabel("FxContactListWidget");
+    lbl->show();
 }
 
-FxContactListWidget::~FxContactListWidget() {
-	// TODO Auto-generated destructor stub
+FxContactListWidget::~FxContactListWidget()
+{
+    FX_FUNCTION
 }
 
+void FxContactListWidget::changeEvent(QEvent *e)
+{
+    FX_FUNCTION
+    QWidget::changeEvent(e);
+}

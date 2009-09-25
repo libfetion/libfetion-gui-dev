@@ -56,7 +56,7 @@
 /*------------------------------------------------------------------
  * ASSERT SERIES DEBUG MACRO
  *-----------------------------------------------------------------*/
-#define FX_RETURN_IF_FAILED(x) do{ if (!x) return; }while(0);
-#define FX_RETURN_WITH_VALUE_IF_FAILED(x, v) do{ if (!x) return v; }while(0);
+#define FX_RETURN_IF_FAILED(x) do{ if (!x) {FX_DEBUG("Stmt failed!"); return;} }while(0);
+#define FX_RETURN_WITH_VALUE_IF_FAILED(x, v) do{ if (!x) {FX_DEBUG("Stmt failed!"); return v; }}while(0);
 
 #endif /* FXDEBUG_H_ */

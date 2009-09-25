@@ -13,9 +13,11 @@
 #include "FxContact.h"
 #include "FxMessage.h"
 
+#include "fxdebug.h"
 class FxChannel:public QObject
 {
     Q_OBJECT
+    LOG4QT_DECLARE_QCLASS_LOGGER
     public:
         FxChannel();
         virtual ~FxChannel();
