@@ -29,12 +29,6 @@
   #include "log4qt/propertyconfigurator.h"
 #endif
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <pwd.h>
-
-#include <stdio.h>
-#include <stdlib.h>
 int main(int argc, char *argv[])
 {
     if (!fx_init())
