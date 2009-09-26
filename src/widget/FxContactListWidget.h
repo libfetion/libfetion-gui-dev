@@ -2,6 +2,7 @@
 #define FXCONTACTLISTWIDGET_H
 
 #include <QtGui/QWidget>
+#include <QLabel>
 
 #include "fxdebug.h"
 
@@ -18,6 +19,13 @@ class FxContactListWidget : public QWidget {
 
     protected:
         void changeEvent(QEvent *e);
+
+    private:
+        void setupSimpleView();
+        void setupComplexView();
+
+    private:
+        bool useSimpleView;
 
 };
 

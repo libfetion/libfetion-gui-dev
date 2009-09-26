@@ -6,7 +6,6 @@ FxMainWindow::FxMainWindow(QWidget *parent) :
     m_ui(new Ui::FxMainWindow)
 {
     m_ui->setupUi(this);
-    setupContactListView();
 }
 
 FxMainWindow::~FxMainWindow()
@@ -55,12 +54,12 @@ void
 FxMainWindow::setupContactListView()
 {
     FX_FUNCTION
-    m_clv = new FxContactListWidget(this);
-//    QVBoxLayout *layout = new QVBoxLayout;
-//    layout->addWidget(m_clv);
+    m_clv = new FxContactListWidget(m_ui->viewContactList);
+    QVBoxLayout *layout = new QVBoxLayout(m_ui->viewContactList);
+    layout->addWidget(m_clv);
 //    if (m_ui->viewContactList->layout() != NULL)
 //        delete m_ui->viewContactList->layout();
 //    m_ui->viewContactList->setLayout(layout);
 //    m_ui->viewContactList->show();
-    m_ui->viewContactList = m_clv;
+//    m_ui->viewContactList = m_clv;
 }

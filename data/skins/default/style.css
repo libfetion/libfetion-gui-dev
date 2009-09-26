@@ -1,0 +1,18 @@
+/*
+ * This file is global style sheet constraint. Styles of following components are
+ * maintained with this file.
+ *  - Widgets
+ *  - Dialogs
+ *  - Windows
+ *
+ * Except the chat conversation view and contact list view, which are handled
+ * with subcomponent style sheet file in this folder.
+ */
+ 
+/*
+ * CONSTRAINT FOR SKIN DEVELOPERS:
+ *  - Skin developer should NEVER use absolute path in this file, for 
+ *    cross-platform consideration. i,e, url(%currentPath%)
+ *  - Never use specific font face
+ *  - Relative position as much as possible
+ */

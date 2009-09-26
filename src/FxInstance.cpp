@@ -96,6 +96,7 @@ FxInstance::displayMainWindow()
     FX_FUNCTION
 
     mainWnd->setStyleSheet(stylesheet->ctx);
+    mainWnd->setupContactListView();
     mainWnd->show();
 }
 

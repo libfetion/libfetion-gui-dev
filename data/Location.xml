@@ -342,7 +342,7 @@
     <item key="998">喀什</item>
     <item key="999">伊宁</item>
 </cityList>
-<provList>
+<stateList>
     <item key="bj">北京市 </item>
     <item key="sh">上海市 </item>
     <item key="tj">天津市 </item>
@@ -377,5 +377,5 @@
     <item key="tw">台湾 </item>
     <item key="hk">香港特别行政区 </item>
     <item key="mo">澳门特别行政区 </item>
-</provList>
+</stateList>
 </document>

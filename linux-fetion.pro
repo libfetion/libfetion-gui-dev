@@ -7,8 +7,11 @@ TEMPLATE = app
 # CONFIG -= debug
 # development configure
 CONFIG += debug
-QT += xml \
-    xmlpatterns
+
+QT += xml
+QT += xmlpatterns
+QT += webkit
+
 win32 { 
     message ("WIN32 build start...")
     TARGET = LibFx

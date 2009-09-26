@@ -29,7 +29,7 @@ class FxMainWindow : public QWidget {
 
     protected:
         void changeEvent(QEvent *e);
-    private:
+    public:
         void setupContactListView();
 
     private:
