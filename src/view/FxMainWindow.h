@@ -26,6 +26,9 @@ class FxMainWindow : public QWidget {
     private slots:
         void slotHandleSelfInfoUpdated(FxContact *);
         void slotHandleContactListUpdated();
+        void slotHandleAddContactBtnClicked();
+        void slotHandleSendSmsToSelfBtnClicked();
+        void slotHandleSettingBtnClicked();
 
     protected:
         void changeEvent(QEvent *e);

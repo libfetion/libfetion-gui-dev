@@ -49,7 +49,24 @@ FxMainWindow::slotHandleContactListUpdated()
 {
     FX_FUNCTION
 }
-
+void
+FxMainWindow::slotHandleAddContactBtnClicked()
+{
+    FX_FUNCTION
+    ;
+}
+void
+FxMainWindow::slotHandleSendSmsToSelfBtnClicked()
+{
+    FX_FUNCTION
+    ;
+}
+void
+FxMainWindow::slotHandleSettingBtnClicked()
+{
+    FX_FUNCTION
+    ;
+}
 void
 FxMainWindow::setupContactListView()
 {
