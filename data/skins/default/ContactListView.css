@@ -1,0 +1,109 @@
+/**
+ * Style rules for the Contact List View
+ */
+
+/**
+ * the body defaults
+ */
+body {
+  word-wrap: break-word;
+}
+/**
+ * Group
+ */
+div.GroupContainer {
+  width: 560px;
+  display: inline-block;
+}
+
+/**
+ * Group header
+ */
+div.GroupHeader {
+  display: inline-block;
+  width: 560px;
+  height: 25px;
+  vertical-align: middle;
+}
+div.GroupHeaderBackground {
+}
+/**
+ * Group header background color - better to have an image instead
+ */
+div.GroupHeaderBackgroundColor {
+
+}
+
+img.GroupExpander {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 1px;
+  vertical-align: middle;
+  outline-style: solid; 
+  outline-width: 1px; 
+  outline-offset: -1px; 
+  -moz-outline-radius: 6px; 
+}
+
+div.GroupText {
+  display: inline;
+  padding-left: 10px;
+  vertical-align: middle;
+}
+
+/**
+ * Contact
+ */
+div.ContactBackground {
+}
+div.ContactBackgroundColor {
+}
+div.Contact {
+  display: inline-block;
+  width: 560px;
+  vertical-align: middle;
+}
+div.ContactName {
+  display: inline;
+  padding-left : 10px;
+  padding-top:10px;
+  vertical-align: middle;
+}
+div.ContactImpresa {
+  display: inline;
+  padding-left : 10px;
+  padding-top:10px;
+  vertical-align: middle;
+}
+/**
+ * Avatars
+ */
+img.ContactAvatar { 
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 1px;
+  vertical-align: top;
+  outline-style: solid; 
+  outline-width: 1px; 
+  outline-offset: -1px; 
+  -moz-outline-radius: 6px; 
+}
+
+/**
+ * Others
+ */
+.DefaultBackgroundColor {
+}
+
+.DefaultTextColor {
+}
+
+
+
+

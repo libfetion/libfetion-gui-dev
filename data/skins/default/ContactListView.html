@@ -1,0 +1,34 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- contact-list-view-widgets -->
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="ContactListView.css"></link>
+    <link rel="stylesheet" type="text/css" href="" id="ThemeCSSLinkUser"></link>
+    <script type="text/javascript" src="ContactListView.js"></script>
+</head>
+
+<!-- Preserve the tag IDs. Everything else can be changed  and rearranged -->
+
+<body class="DefaultBackgroundColor DefaultTextColor" onload="ContactListView_init()">
+<div id="GroupContainer" class="GroupContainer">
+    <div id="GroupHeader" class="GroupHeader GroupHeaderBackground GroupHeaderBackgroundColor">
+        <img id="GroupExpander" class="GroupExpander"/>
+        <!-- GroupName contains the contact numbers -->
+        <div id="GroupName" class="GroupText">My Family</div>
+    </div>
+    <div id="Contact" class="ContactBackground ContactBackgroundColor Contact">
+        <img id="ContactAvatar" class="ContactAvatar"/>
+        <div id="ContactName" class="ContactName">Alice</div>
+        <div id="ContactImpresa" class="ContactImpresa">happy living!</div>
+    </div>
+    <!--
+    <div id="ContactOdd" class="Contact ContactOddStyle" style="display:none"></div>
+    <div id="ContactEven" class="Contact ContactEvenStyle" style="display:none"></div>
+    -->
+</div>
+</body>
+</html>
