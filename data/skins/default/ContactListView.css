@@ -45,7 +45,6 @@ img.GroupExpander {
   outline-style: solid; 
   outline-width: 1px; 
   outline-offset: -1px; 
-  -moz-outline-radius: 6px; 
 }
 
 div.GroupText {

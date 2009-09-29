@@ -15,12 +15,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 <body class="DefaultBackgroundColor DefaultTextColor" onload="ContactListView_init()">
 <div id="GroupContainer" class="GroupContainer">
-    <div id="GroupHeader" class="GroupHeader GroupHeaderBackground GroupHeaderBackgroundColor">
+    <div onclick="ContactListView_expand()" id="GroupHeader" class="GroupHeader GroupHeaderBackground GroupHeaderBackgroundColor">
         <img id="GroupExpander" class="GroupExpander"/>
         <!-- GroupName contains the contact numbers -->
         <div id="GroupName" class="GroupText">My Family</div>
     </div>
-    <div id="Contact" class="ContactBackground ContactBackgroundColor Contact">
+    <div ondblclick="ContactListView_chat()" id="Contact" class="ContactBackground ContactBackgroundColor Contact" style="display:none">
         <img id="ContactAvatar" class="ContactAvatar"/>
         <div id="ContactName" class="ContactName">Alice</div>
         <div id="ContactImpresa" class="ContactImpresa">happy living!</div>
