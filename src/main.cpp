@@ -29,9 +29,10 @@
   #include "log4qt/propertyconfigurator.h"
 #endif
 
+#include "FxLowLevelWrapper.h"
 int main(int argc, char *argv[])
 {
-    if (!fx_init())
+    if (!FX_LIB_INIT())
     {
         fprintf(stderr, "Initialize low level fetion library failed \n");
         exit(0);
@@ -58,7 +59,7 @@ int main(int argc, char *argv[])
 
     //destroy the libfetion
     fprintf(stderr, "Destroy low level fetion library, ready to exit! \n");
-    fx_terminate();
+    FX_LIB_TERMINATE();
 
     return reslut;
 }

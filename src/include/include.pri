@@ -9,3 +9,4 @@ HEADERS += $$PWD/fxconfig.h
 HEADERS += $$PWD/fxdebug.h
 HEADERS += $$PWD/fxglobal.h
 HEADERS += $$PWD/libfetion.h
+HEADERS += $$PWD/FxLowLevelWrapper.h

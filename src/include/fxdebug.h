@@ -21,6 +21,7 @@
 #define FXDEBUG_H_
 
 #include "appconfig.h"
+#include "FxLowLevelWrapper.h"
 /*------------------------------------------------------------------
  * LOG4QT DECLARE HERE
  *-----------------------------------------------------------------*/

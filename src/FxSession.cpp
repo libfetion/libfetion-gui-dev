@@ -51,17 +51,17 @@ FxSession::login(QString id, QString passwd, QString status)
 #else
     if (status == tr("offline"))
     {
-        fx_set_login_status(FX_STATUS_OFFLINE);
+        FX_LIB_SET_LOGIN_STATE(FX_STATUS_OFFLINE);
     }else if (status == tr("busy"))
     {
-        fx_set_login_status(FX_STATUS_BUSY);
+        FX_LIB_SET_LOGIN_STATE(FX_STATUS_BUSY);
     }else if (status == tr("away"))
     {
-        fx_set_login_status(FX_STATUS_AWAY);
+        FX_LIB_SET_LOGIN_STATE(FX_STATUS_AWAY);
     }
     else
     {
-        fx_set_login_status(FX_STATUS_ONLINE);
+        FX_LIB_SET_LOGIN_STATE(FX_STATUS_ONLINE);
     }
 
     QByteArray ba = id.toLatin1();
@@ -70,7 +70,7 @@ FxSession::login(QString id, QString passwd, QString status)
     const char* upasswd = ba.data();
 
     /*TODO: update fx_login after libevent supported */
-    fx_login(uid, upasswd, wrapper, this);
+    FX_LIB_LOGIN(uid, upasswd, wrapper, this);
 #endif
 }
 
@@ -78,7 +78,7 @@ void
 FxSession::cancel()
 {
     FX_FUNCTION
-    fx_cancel_login();
+    FX_LIB_CANCEL_LOGIN();
 }
 
 void
@@ -94,7 +94,7 @@ FxSession::quit()
 #ifdef FX_GUI_DEBUG_ENABLE
 #else
     // TODO do real logout here
-    fx_loginout();
+    FX_LIB_LOGINOUT();
 #endif
 }
 
@@ -125,7 +125,7 @@ FxSession::fillInContactInfo(FxContact * contact, const Fetion_Personal *p)
     FX_DEBUG(city);
 
     if (nick.isEmpty() && name.isEmpty())
-        nick = name = QString(fx_get_usr_show_name());
+        nick = name = QString(FX_LIB_GET_USR_SHOW_NAME());
 
     contact->setMobileNr(mnr);
 //    contact->setFetionNr("");
@@ -150,20 +150,20 @@ FxSession::updateContactInfo(const Fetion_Account *account)
     FxContact *contact = new FxContact();
 
     /* exclude self contact */
-    if (account->id == (qlonglong)strtol(fx_get_usr_uid(), NULL, 10))
+    if (account->id == (qlonglong)strtol(FX_LIB_GET_USR_UID(), NULL, 10))
     {
         return NULL;
     }
 
     /* update specified user information */
-    fx_update_account_info_by_id(account->id);
+    FX_LIB_UPDATE_ACCOUNT_INFO_BY_ID(account->id);
 
     contact = fillInContactInfo(contact, account->personal);
     if (contact != NULL)
     {
-        contact->setGroupNr(fx_get_account_group_id(account));
-        contact->setName(QString::fromUtf8(fx_get_account_show_name(account, TRUE)));
-        contact->setOnlineStatus(fx_get_online_status_by_account(account));
+        contact->setGroupNr(FX_LIB_GET_ACCOUNT_GROUP_ID(account));
+        contact->setName(QString::fromUtf8(FX_LIB_GET_ACCOUNT_SHOW_NAME(account, TRUE)));
+        contact->setOnlineStatus(FX_LIB_GET_ONLINE_STATUS_BY_ACCOUNT(account));
     }
     return contact;
 }
@@ -174,7 +174,7 @@ FxSession::updateSelfInfo()
     FX_FUNCTION
     self = new FxContact();
 
-    const Fetion_Personal *p = fx_data_get_PersonalInfo();
+    const Fetion_Personal *p = Fx_LIB_GET_DATA_PERSONAL_INFO();
 
 
     self = fillInContactInfo(self, p);
@@ -188,14 +188,14 @@ FxSession::retrieveContactList()
     FX_FUNCTION
 
     FxContact *c = new FxContact();
-    const Fetion_Account *contact = fx_get_first_account();
+    const Fetion_Account *contact = FX_LIB_GET_FIRST_ACCCOUNT();
 
     while (contact)
     {
         c = updateContactInfo(contact);
         if (c != NULL)
             contactList.append(c);
-        contact = fx_get_next_account(contact);
+        contact = FX_LIB_GET_NEXT_ACCOUNT(contact);
     }
 
     emit SignalContactListUpdated();
@@ -211,7 +211,7 @@ FxSession::slotHandleUpdatePresence(int status)
         case FX_STATUS_OFFLINE:
         case FX_STATUS_BUSY:
         case FX_STATUS_AWAY:
-            fx_set_user_state(status, NULL, NULL, NULL);
+            FX_LIB_SET_USR_STATE(status, NULL, NULL, NULL);
             break;
         default:
             break;

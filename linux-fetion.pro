@@ -7,19 +7,15 @@ TEMPLATE = app
 # CONFIG -= debug
 # development configure
 CONFIG += debug
-
 QT += xml
 QT += xmlpatterns
 QT += webkit
-
 win32 { 
     message ("WIN32 build start...")
     TARGET = LibFx
     CONFIG += static
     QTPLUGIN += qgif
-    RC_FILE = ./misc/libfetion.rc
-    LIBS += qgif.lib \
-        ./lib/libcurl_imp.lib
+    LIBS += ./lib/libcurl_imp.lib
 }
 unix { 
     message ("UNIX build start...")
@@ -47,7 +43,10 @@ OBJECTS_DIR = $$PWD/.tmp
 MOC_DIR = $$PWD/.moc
 UI_HEADERS_DIR = $$PWD/.ui
 
+# DEFINES += FX_LIB_FUNC_DEBUG
+
 # sub-directory sources
+include (src/include/include.pri)
 include (src/fetion-gui.pri)
 include (ui/ui.pri)
 include (src/model/model.pri)
@@ -88,5 +87,3 @@ unix:target.extra = ./install.sh
 # target
 target.path += /usr/bin
 INSTALLS += target
-HEADERS += src/FxStrings.h
-OTHER_FILES += src/include/include.pri

@@ -12,7 +12,8 @@ HEADERS += $$PWD/FxSession.h
 HEADERS += $$PWD/fxglobal.h
 HEADERS += $$PWD/fxdebug.h
 HEADERS += $$PWD/appconfig.h
- 
+HEADERS += src/FxStrings.h
+
 SOURCES += $$PWD/main.cpp
 SOURCES += $$PWD/FxInstance.cpp
 SOURCES += $$PWD/FxChannel.cpp
