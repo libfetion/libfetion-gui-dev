@@ -16,13 +16,16 @@ function ContactListView_init()
 
 /**
  * ContactListView_expand:
+ * @gid:                Group Id
  *
  * Show contacts under the group.
  **/
-function ContactListView_expand()
+function ContactListView_expand(gid)
 {
-	alert("ContactListView_expand");
-	
+    //alert("ContactListView_expand");
+    // var c = document.getElementById("Contact");
+    // c.removeAttribute('style');
+    //TODO: display all the child nodes (contacts) under the group
 }
 
 /**
@@ -32,7 +35,17 @@ function ContactListView_expand()
  **/
 function ContactListView_chat()
 {
-	alert("ContactListView_chat");
+    alert("ContactListView_chat");
+}
+
+/**
+ * ContactListView_contactClicked:
+ *
+ * Show contact info details.
+ **/
+function ContactListView_contactClicked()
+{
+    alert("ContactListView_contactClicked");
 }
 
 /**
@@ -42,7 +55,7 @@ function ContactListView_chat()
  **/
 function ContactListView_flushBuffer()
 {
-	alert("ContactListView_expand");
+    alert("ContactListView_expand");
 	
 }
 /**
@@ -52,8 +65,12 @@ function ContactListView_flushBuffer()
  **/
 function ContactListView_groupNode()
 {
-	alert("ContactListView_groupNode");
-	
+    var new_group;
+    var expander;
+    var group_name;
+    var number;
+
+    alert("ContactListView_groupNode");
 }
 
 /**
@@ -63,8 +80,12 @@ function ContactListView_groupNode()
  **/
 function ContactListView_contactNode()
 {
-	alert("ContactListView_contactNode");
-	
+    var new_contact;
+    var avatar_img;
+    var contact_name;
+    var contact_impresa;
+
+    alert("ContactListView_contactNode");
 }
 /**
  * ContactListView_addGroup:
@@ -78,6 +99,7 @@ function ContactListView_contactNode()
  **/
 function ContactListView_addGroup(gid, group_name_str, number_str)
 {
+    alert("ContactListView_addGroup");
 }
 /**
  * ContactListView_addContact:
@@ -86,17 +108,12 @@ function ContactListView_addGroup(gid, group_name_str, number_str)
  * @avatar:             The avatar to show in the screen
  * @name_str:           The name string to show in the screen
  * @impresa_str:        The impresa string to show in the screen
- * @add_to_top:         Add the new message to the top of the list
  *
  * Add a individual contact under a group (target with group id).
  **/
-function ContactListView_addContact(gid, type, avatar, name_str, impresa_str,
-                                    add_to_top)
+function ContactListView_addContact(gid, type, avatar, name_str, impresa_str)
 {
-	if (add_to_top){
-	
-	} else {
-	
-	}
-	/* Find target group based on id */
+    alert("ContactListView_addContact");
+
+    /* Find target group based on id */
 }
