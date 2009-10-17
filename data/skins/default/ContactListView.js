@@ -9,6 +9,10 @@ var test = true;
 var markupTemplateGroup;
 var markupTemplateContact;
 
+function ALERT(x)
+{
+    alert(x);
+}
 function ContactListView_init()
 {
 
@@ -35,7 +39,7 @@ function ContactListView_groupClicked(gid)
  **/
 function ContactListView_contactClicked()
 {
-    alert("ContactListView_contactClicked");
+    ALERT("ContactListView_contactClicked");
 }
 
 /**
@@ -45,7 +49,7 @@ function ContactListView_contactClicked()
  **/
 function ContactListView_contactDoubleClicked()
 {
-    alert("ContactListView_contactDoubleClicked");
+    ALERT("ContactListView_contactDoubleClicked");
 }
 
 /**
@@ -55,7 +59,7 @@ function ContactListView_contactDoubleClicked()
  **/
 function ContactListView_flush()
 {
-    alert("ContactListView_flush");
+    ALERT("ContactListView_flush");
 	
 }
 /**
@@ -74,7 +78,8 @@ function ContactListView_groupNode(item)
     var group_name;
     var number;
 
-    alert("ContactListView_groupNode");
+    ALERT("ContactListView_groupNode");
+    
     if(item.type != 0)
     {
         alert("");
@@ -116,7 +121,7 @@ function ContactListView_contactNode(item)
     var contact_impresa;
     var type = "Contact";
 
-    alert("ContactListView_contactNode");
+    ALERT("ContactListView_contactNode");
     if(item.type != 0)
     {
         alert("");
@@ -157,10 +162,20 @@ function ContactListView_contactNode(item)
  **/
 function ContactListView_addGroup(gid, group_name_str, number_str)
 {
-    alert("ContactListView_addGroup");
+    var group_node;
+    
+    ALERT("ContactListView_addGroup");
+
+    group_node.id = gid;
+    group_node.name = group_name_str;
+    group_node.number = number_str;
+    
+    /* TODO: check if node existed */
+    ContactListView_groupNode(group_node);
 }
 /**
  * ContactListView_addContact:
+ * @uid:                User Id
  * @gid:                Group Id
  * @type:               Type of the contact (person/room)
  * @avatar:             The avatar to show in the screen
@@ -169,9 +184,21 @@ function ContactListView_addGroup(gid, group_name_str, number_str)
  *
  * Add a individual contact under a group (target with group id).
  **/
-function ContactListView_addContact(gid, type, avatar, name_str, impresa_str)
+function ContactListView_addContact(uid, gid, type, avatar, name_str, impresa_str)
 {
-    alert("ContactListView_addContact");
+    var contact_node;
+    
+    ALERT("ContactListView_addContact");
 
+    contact_node.id = uid;
+    contact_node.gid = gid;
+    contact_node.type = type;
+    contact_node.avatar = avatar;
+    contact_node.name = name_str;
+    contact_node.impresa = impresa_str;
+    
+    /* TODO: check if node existed */
+    ContactListView_contactNode(contact_node);
+    
     /* Find target group based on id */
 }

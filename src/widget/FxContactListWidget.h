@@ -4,6 +4,8 @@
 #include <QtGui/QWidget>
 #include <QLabel>
 
+#include "FxWidgetViewRender.h"
+
 #include "fxdebug.h"
 
 namespace Ui {
@@ -26,6 +28,7 @@ class FxContactListWidget : public QWidget {
 
     private:
         bool useSimpleView;
+        FxWidgetViewRender *render;
 
 };
 

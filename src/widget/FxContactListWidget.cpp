@@ -41,6 +41,7 @@ FxContactListWidget::setupSimpleView()
     view->load(QUrl("http://sodu.org/"));
     view->show();
     frame = view->page()->mainFrame();
+    render = new FxWidgetViewRender(frame);
 //    frame->evaluateJavaScript(js);
 }
 
