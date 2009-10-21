@@ -13,6 +13,7 @@
 #define FXWIDGETVIEWRENDER_H_
 
 #include <QWebFrame>
+#include "FxContact.h"
 
 #include "fxdebug.h"
 
@@ -24,12 +25,14 @@ class FxWidgetViewRender : public QObject{
         virtual ~FxWidgetViewRender();
 
     public:
-        void init();
+        void init(QList<FxContact *> *);
         void addGroupNode(quint32, QString, QString);
         void addContactNode(quint32, quint32, QString, QString, QString, QString);
 
     private:
         QWebFrame* frame;
+        QList<quint32> listGid;
+        QList<quint32> listUid;
 };
 
 #endif /* FXWIDGETVIEWRENDER_H_ */

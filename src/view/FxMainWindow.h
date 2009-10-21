@@ -22,10 +22,11 @@ class FxMainWindow : public QWidget {
     signals:
         /* notify session "session-update-presence" */
         void SignalSessionUpdatePresence(int);
+        void SignalClvNeedUpdate(QList<FxContact *> *);
 
     private slots:
         void slotHandleSelfInfoUpdated(FxContact *);
-        void slotHandleContactListUpdated();
+        void slotHandleContactListUpdated(QList<FxContact *> *);
         void slotHandleAddContactBtnClicked();
         void slotHandleSendSmsToSelfBtnClicked();
         void slotHandleSettingBtnClicked();

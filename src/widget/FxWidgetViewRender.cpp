@@ -8,18 +8,38 @@
 #include "FxWidgetViewRender.h"
 
 FxWidgetViewRender::FxWidgetViewRender(QWebFrame* web) {
-	// TODO Auto-generated constructor stub
     frame = web;
 }
 
 FxWidgetViewRender::~FxWidgetViewRender() {
-	// TODO Auto-generated destructor stub
 }
 
 void
-FxWidgetViewRender::init()
+FxWidgetViewRender::init(QList<FxContact *> *data)
 {
     FX_FUNCTION
+    /* TODO: iterate add group/contact to render buffer */
+    QList<FxContact *> list;
+    list = *(QList<FxContact *> *)data;
+    QListIterator<FxContact *> iter(list);
+
+    FxContact *tnode;
+
+    while((iter.hasNext()) && (tnode = iter.next())){
+        if (listGid.indexOf(tnode->getGroupNr()) < 0) {
+            /* new group found, add to group list */
+            listGid.append(tnode->getGroupNr());
+            addGroupNode(tnode->getGroupNr(),
+                    /* group name*/,
+                    /* number*/);
+        }
+        addContactNode(tnode->getMobileNr(),
+                tnode->getGroupNr(),
+                /* contact type */,
+                /* contact avatar */,
+                tnode->getName(),
+                tnode->getImpresa());
+    }
 }
 void
 FxWidgetViewRender::addGroupNode(

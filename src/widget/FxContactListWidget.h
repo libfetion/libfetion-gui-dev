@@ -5,6 +5,7 @@
 #include <QLabel>
 
 #include "FxWidgetViewRender.h"
+#include "FxContact.h"
 
 #include "fxdebug.h"
 
@@ -22,13 +23,18 @@ class FxContactListWidget : public QWidget {
     protected:
         void changeEvent(QEvent *e);
 
+    private slots:
+        void slotHandleClvUpdate(QList<FxContact *> *);
+
     private:
         void setupSimpleView();
         void setupComplexView();
 
     private:
         bool useSimpleView;
-        FxWidgetViewRender *render;
+        FxWidgetViewRender  *render;
+        /* All the contacts with group id specified */
+        QList<FxContact *>  *data;
 
 };
 

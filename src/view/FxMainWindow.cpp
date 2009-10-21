@@ -44,10 +44,14 @@ FxMainWindow::slotHandleSelfInfoUpdated(FxContact *self)
     repaint();
 }
 
+/*
+ * Forward Contact List Data updated signal to CLView
+ */
 void
-FxMainWindow::slotHandleContactListUpdated()
+FxMainWindow::slotHandleContactListUpdated(QList<FxContact *> *data)
 {
     FX_FUNCTION
+    emit SignalClvNeedUpdate(data);
 }
 void
 FxMainWindow::slotHandleAddContactBtnClicked()
@@ -74,6 +78,8 @@ FxMainWindow::setupContactListView()
     m_clv = new FxContactListWidget(m_ui->viewContactList);
     QVBoxLayout *layout = new QVBoxLayout(m_ui->viewContactList);
     layout->addWidget(m_clv);
+    connect(this, SIGNAL(SignalClvNeedUpdate(QList<FxContact *> *data)),
+            m_clv, SLOT(slotHandleContactListUpdated(QList<FxContact *> *data)));
 //    if (m_ui->viewContactList->layout() != NULL)
 //        delete m_ui->viewContactList->layout();
 //    m_ui->viewContactList->setLayout(layout);

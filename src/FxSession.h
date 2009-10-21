@@ -45,7 +45,7 @@ class FxSession : public QObject
         /* notify "login-failed" */
         void SignalLoginFailed();
         /* notify ui "session-contact-updated" */
-        void SignalContactListUpdated();
+        void SignalContactListUpdated(QList<FxContact *> *);
         /* notify ui "session-self-updated" */
         void SignalSelfInfoUpdated(FxContact *);
         /* notify "session-leave" */
@@ -77,7 +77,7 @@ class FxSession : public QObject
          * Contacts of session, don't distinct group and individual
          * contacts
          * */
-        QList<FxContact *>          contactList;
+        QList<FxContact *>          *contactList;
         FxEventLogger               *el;
 
         /* user id, can be fetion nr, or phone number*/

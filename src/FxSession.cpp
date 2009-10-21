@@ -194,11 +194,11 @@ FxSession::retrieveContactList()
     {
         c = updateContactInfo(contact);
         if (c != NULL)
-            contactList.append(c);
+            contactList->append(c);
         contact = fx_get_next_account(contact);
     }
 
-    emit SignalContactListUpdated();
+    emit SignalContactListUpdated(contactList);
 }
 
 void

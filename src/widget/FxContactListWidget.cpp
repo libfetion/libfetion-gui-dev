@@ -34,7 +34,6 @@ void FxContactListWidget::changeEvent(QEvent *e)
 void
 FxContactListWidget::setupSimpleView()
 {
-//    QString js("alert(\"Hello Kitty!\");");
     FX_FUNCTION
     QWebView *view = new QWebView(this);
     QWebFrame *frame;
@@ -42,11 +41,19 @@ FxContactListWidget::setupSimpleView()
     view->show();
     frame = view->page()->mainFrame();
     render = new FxWidgetViewRender(frame);
-//    frame->evaluateJavaScript(js);
+    //TODO: pass-in contact list data
+    render->init(data);
 }
 
 void
 FxContactListWidget::setupComplexView()
 {
     FX_FUNCTION
+}
+
+void
+FxContactListWidget::slotHandleClvUpdate(QList<FxContact *> *cld)
+{
+    FX_FUNCTION
+    data = cld;
 }

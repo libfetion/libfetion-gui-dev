@@ -154,7 +154,7 @@ function ContactListView_contactNode(item)
  * ContactListView_addGroup:
  * @gid:                Group Id
  * @group_name_str:     The name string of group
- * @number_str:         The time string to show in the screen
+ * @number_str:         Online contact numbers vs. total contacts number 
  *
  * This group differs from fetion Qun concept. Qun is 'Room' in our application.
  * Each group will have its own group id for distinct different contact list 
